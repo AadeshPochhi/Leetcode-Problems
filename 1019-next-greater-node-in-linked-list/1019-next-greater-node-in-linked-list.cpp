@@ -26,7 +26,8 @@ public:
                 sk.pop();
                 ans[idx]=v[i];
             }
-            sk.push(i++);
+            sk.push(i);
+            i++;
         }
         return ans;
     }
