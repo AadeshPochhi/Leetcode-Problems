@@ -8,6 +8,8 @@ public:
         int res=ans1[0];
         for(int i=1;i<n;i++){
             ans1[i]=max(nums[i]+ans1[i-1],nums[i]);
+        }
+        for(int i=0;i<n;i++){
             res=max(res,ans1[i]);
         }
         vector<int> ans2(n);
