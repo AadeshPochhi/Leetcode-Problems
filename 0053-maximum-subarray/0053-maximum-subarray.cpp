@@ -14,14 +14,24 @@ public:
         // return ans;
         
         // //Method 2:
+        // int n=nums.size();
+        // if(n==1) return nums[0];
+        // vector<int> ans(n);
+        // ans[0]=nums[0];
+        // int res=ans[0];
+        // for(int i=1;i<n;i++){
+        //     ans[i]=max(nums[i]+ans[i-1],nums[i]);
+        //     res=max(res,ans[i]);
+        // }
+        // return res;
+        
         int n=nums.size();
         if(n==1) return nums[0];
-        vector<int> ans(n);
-        ans[0]=nums[0];
-        int res=ans[0];
+        int prev=nums[0];
+        int res=prev;
         for(int i=1;i<n;i++){
-            ans[i]=max(nums[i]+ans[i-1],nums[i]);
-            res=max(res,ans[i]);
+            prev=max(nums[i]+prev,nums[i]);
+            res=max(res,prev);
         }
         return res;
         
