@@ -47,9 +47,9 @@ public:
     int mincostTickets(vector<int>& days, vector<int>& costs) {
         //return solve_using_recursion(days,costs,0);
         
-        // vector<int> dp(days.size()+1,-1);
-        // return solve_using_mem(days,costs,0,dp);
+        vector<int> dp(days.size()+1,-1);
+        return solve_using_mem(days,costs,0,dp);
         
-        return solve_using_tabulation(days,costs);
+        //return solve_using_tabulation(days,costs);
     }
 };
