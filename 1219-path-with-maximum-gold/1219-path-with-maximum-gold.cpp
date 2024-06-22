@@ -3,7 +3,9 @@ public:
     vector<vector<int>> vis;
     int maxGold(vector<vector<int>> &mat,int x,int y){
         int n=mat.size(),m=mat[0].size();
-        if(x<0 || y<0 || x>=n || y>=m || vis[x][y] || !mat[x][y])           return 0;
+        if( x<0 || y<0 || x>=n || y>=m || vis[x][y] || !mat[x][y] ){
+            return 0;
+        }
         vis[x][y]=1;
         int ans=mat[x][y]+max({maxGold(mat,x+1,y),maxGold(mat,x-1,y),maxGold(mat,x,y-1),maxGold(mat,x,y+1)});
         vis[x][y]=0;
