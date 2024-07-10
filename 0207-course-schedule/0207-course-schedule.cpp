@@ -16,9 +16,7 @@ public:
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
         vector<int> adj[numCourses];
         for(auto p:prerequisites){
-            int u=p[0];
-            int v=p[1];
-            adj[u].push_back(v);
+            adj[p[0]].push_back(p[1]);
         }
         vector<int>vis(numCourses,0);
         vector<int>stack(numCourses,0);
