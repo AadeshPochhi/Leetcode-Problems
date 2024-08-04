@@ -1,26 +1,30 @@
 class Solution {
 public:
-    int mod=1e9+7;
     int rangeSum(vector<int>& nums, int n, int left, int right) {
-        priority_queue<int, vector<int>, greater<int>> subarrays;
-        int prefix;
-        for(int i=0;i<n;i++){
-            prefix=0;
-            for(int j=i;j<n;j++){
-                prefix+=nums[j];
-                prefix%=mod;
-                subarrays.push(prefix);
+        const int MOD = 1000000007;
+        
+        vector<int> prefix(n + 1, 0);
+        for (int i = 0; i < n; ++i) {
+            prefix[i + 1] = prefix[i] + nums[i];
+        }
+        
+        priority_queue<int, vector<int>, greater<int>> minHeap;
+        
+        for (int i = 1; i <= n; ++i) {
+            for (int j = 0; j < i; ++j) {
+                minHeap.push(prefix[i] - prefix[j]);
             }
         }
-        int res=0;
-        for(int i=1;i<=right;i++){
-            int val=subarrays.top();
-            subarrays.pop();
-            if(i>=left){
-                res+=val;
-                res%=mod;
+        
+        long long result = 0;
+        for (int i = 1; i <= right; ++i) {
+            int sum_value = minHeap.top();
+            minHeap.pop();
+            if (i >= left) {
+                result = (result + sum_value) % MOD;
             }
         }
-        return res;
+        
+        return result;
     }
 };
